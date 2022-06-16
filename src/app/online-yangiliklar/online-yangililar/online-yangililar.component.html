@@ -1,0 +1,70 @@
+<br>
+<mat-accordion class="example-headers-align">
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Online yangilik
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <form [formGroup]="OnlineForm" method="post" (ngSubmit)="save()">
+
+      <mat-form-field appearance="fill">
+        <mat-label>Link</mat-label>
+        <input formControlName="link" matInput>
+      </mat-form-field> <br><br>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Caption</mat-label>
+        <input formControlName="caption" matInput type="text">
+      </mat-form-field><br><br>
+
+      <mat-checkbox formControlName="boshSahifaga" type="checkbox">Bosh sahifaga</mat-checkbox>
+      <br><br>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Subject-Levl</mat-label>
+        <mat-select formControlName="tur" [disabled]="disableSelect.value">
+          <mat-option value="YouTube">YouTube</mat-option>
+          <mat-option value="Instagram">Intgram</mat-option>
+        </mat-select>
+      </mat-form-field><br><br>
+
+      <mat-action-row>
+        <button mat-button color="primary" [disabled]="OnlineForm.invalid" type="submit">Yaqlash</button>
+      </mat-action-row>
+    </form>
+  </mat-expansion-panel>
+</mat-accordion>
+<br><br><br>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Link</th>
+      <th>Caption</th>
+      <th>Bosh Sahifaga</th>
+      <th>Tur</th>
+      <th>Amal</th>
+    </tr>
+
+  </thead>
+  <tbody>
+    <tr *ngFor="let o of OnlineYangiliklar">
+      <td>{{o.id}}</td>
+      <td>
+        <a [href]="o.link" target="_blank">{{o.link}}</a>
+      </td>
+      <td>{{o.caption}}</td>
+      <td>{{o.boshSahifaga}}</td>
+      <td>{{o.tur}}</td>
+      <td>
+        <button mat-button (click)="ochirish(o.id)">
+          <mat-icon class="mat-18">delete</mat-icon>
+        </button>
+      </td>
+
+    </tr>
+
+  </tbody>
+  <br><br>
+</table>

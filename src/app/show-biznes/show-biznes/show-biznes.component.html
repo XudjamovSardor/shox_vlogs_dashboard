@@ -1,0 +1,75 @@
+<mat-accordion>
+    <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <mat-card-header>
+                Show Biznes Yangiliklar bilan ishlash bo'limi
+            </mat-card-header>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+          <form [formGroup]="showBiznesForm" method="post" (ngSubmit)="save()">
+
+            <mat-form-field appearance="fill">
+                <mat-label>Matn</mat-label>
+                <input formControlName="matn" matInput>
+
+            </mat-form-field> <br><br>
+            <mat-form-field style="width: 100%;" appearance="fill">
+                <mat-label>Tuliq malumot</mat-label>
+                <textarea formControlName="tuliqMalumot" matInput>Tuliq malumot...</textarea>
+            </mat-form-field>
+
+            <div class="file-chooser">
+                <img [src]="fayl ?? 'assets/no_photo.png'" alt="">
+                <input #inputFile formControlName="image" type="file" accept="image/apng, image/avif, image/gif, image/jpeg, image/png, image/svg+xml, image/webp" (change)="selectFile($event)" />
+                <button type="button"  mat-raised-button color="warn" (click)="inputFile.click()">Fayl tanlash</button>
+            </div>
+
+            
+            <br>
+
+            <!-- <div class="file-chooser">
+                <img [src]="fayl ?? 'assets/no_photo.png'" alt="">
+                <input #inputFile formControlName="image" type="file" accept="image/apng, image/avif, image/gif, image/jpeg, image/png, image/svg+xml, image/webp" (change)="selectFile($event)" />
+                <button type="button"  mat-raised-button color="warn" (click)="inputFile.click()">Fayl tanlash</button>
+            </div> -->
+                <mat-action-row>
+                    <button class="btn" mat-raised-button color="primary" type="submit"
+                        [disabled]="showBiznesForm.invalid">Saqlash</button>
+                </mat-action-row>
+            </form>
+      </mat-expansion-panel>
+</mat-accordion><br>
+
+<table mat-table [dataSource]="showBiznes" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> # </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="image">
+      <th mat-header-cell *matHeaderCellDef> Image </th>
+      <td mat-cell *matCellDef="let element"><a [href]="getUrl(element.image)" target="_blank" rel="noopener noreferrer"><img height="50" style="margin: 20px 10px;" [src]="getUrl(element.image)"></a>  </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="nom">
+      <th mat-header-cell *matHeaderCellDef> Matn </th>
+      <td mat-cell *matCellDef="let element"> {{element.matn}} </td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="tuliqMalumot">
+      <th mat-header-cell *matHeaderCellDef> Tuliq Malumot </th>
+      <td mat-cell *matCellDef="let element"> {{element.tuliqMalumot}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>

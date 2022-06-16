@@ -1,0 +1,94 @@
+<mat-card>
+<mat-card-title>Reklama</mat-card-title>
+
+    <mat-accordion>
+        <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <mat-card-header>
+                    Reklama bilan ishlash bo'limi
+                </mat-card-header>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+              <form [formGroup]="reklamaForm" method="post" (ngSubmit)="save()">
+
+                <div>
+                    <mat-label>Banner</mat-label> &nbsp;&nbsp;
+                    <mat-checkbox formControlName="baner"></mat-checkbox>
+                </div>
+                <br>
+
+                <div class="file-chooser">
+                    <img [src]="fayl ?? 'assets/no_photo.png'" alt="">
+                    <input #inputFile formControlName="image" type="file" accept="image/apng, image/avif, image/gif, image/jpeg, image/png, image/svg+xml, image/webp" (change)="selectFile($event)" />
+                    <button type="button"  mat-raised-button color="warn" (click)="inputFile.click()">Fayl tanlash</button>
+                </div>
+                <mat-action-row>
+                    <button class="btn" mat-raised-button color="primary" type="submit"
+                        [disabled]="reklamaForm.invalid || isLoading">
+                        <mat-spinner *ngIf="isLoading" diameter="20"></mat-spinner>
+                    <mat-icon *ngIf="!isLoading" class="mat-18">add</mat-icon>
+                        Saqlash
+                    </button>
+                </mat-action-row>
+                </form>
+            
+            
+                
+            
+
+
+          </mat-expansion-panel>
+    </mat-accordion><br>
+
+    <mat-card-content>
+        
+        <div class="table-container">
+            <div *ngIf="isLoadingResult" class="loading">
+                <mat-spinner diameter="100"></mat-spinner>
+            </div>
+
+            <table mat-table [dataSource]="reklama" class="mat-elevation-z8" matSort matSortActive="id"
+                matSortDisableClear matSortDirection="asc">
+                <!-- Position Column -->
+                <ng-container matColumnDef="id">
+                    <th mat-sort-header mat-header-cell *matHeaderCellDef>ID</th>
+                    <td mat-cell *matCellDef="let rek">{{ rek.id }}</td>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="rasm">
+                    <th mat-sort-header mat-header-cell *matHeaderCellDef> Rasm</th>
+                    <td mat-cell *matCellDef="let rek">
+                        <a [href]="getUrl(rek.image)" target="_blank" rel="noopener noreferrer"><img [src]="getUrl(rek.image)" alt=""></a>
+                    </td>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="baner">
+                    <th mat-sort-header mat-header-cell *matHeaderCellDef> Banner</th>
+                    <td mat-cell *matCellDef="let rek">{{ rek.baner }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="vaqt">
+                    <th mat-sort-header mat-header-cell *matHeaderCellDef> Qushilgan kun</th>
+                    <td mat-cell *matCellDef="let rek">{{ rek.image.localDate }}</td>
+                </ng-container>
+
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="amal">
+                    <th mat-header-cell *matHeaderCellDef></th>
+                    <td mat-cell *matCellDef="let rek">
+                        <button mat-button color="accent" (click)="ochirish(rek.id)">
+                            <mat-icon class="mat-18">delete</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+            </table>
+
+        </div>
+    </mat-card-content>
+</mat-card>
