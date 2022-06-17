@@ -84,5 +84,5 @@ export class YangilikComponent implements OnInit {
   }
 
 
-  displayedColumns: string[] = ['id', 'image', 'nom', 'tuliqMalumot'];
+  displayedColumns: string[] = ['id', 'image', 'matn', 'tuliqMalumot'];
 }
