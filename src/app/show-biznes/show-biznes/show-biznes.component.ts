@@ -12,6 +12,8 @@ import { environment } from 'src/environments/environment.prod';
 export class ShowBiznesComponent implements OnInit {
   showBiznesForm!: FormGroup
 
+  matn: String = ''
+
   showBiznes!: any[]
 
   selectedFile: File | undefined;
@@ -35,7 +37,7 @@ export class ShowBiznesComponent implements OnInit {
 
   loader() {
     this.showBiznesService.getAll().subscribe(data => {
-      this.showBiznes = data
+      this.showBiznes = data.content
     })
   }
 
@@ -70,10 +72,20 @@ export class ShowBiznesComponent implements OnInit {
         this.fayl = reader.result;
       }
       reader.readAsDataURL(this.selectedFile);
-
-
     }
   }
+
+
+
+  tuliqView(i: any) {
+    this.matn = i.tuliqMalumot;
+    this.tuliqMatn()
+  }
+
+  tuliqMatn() {
+    return this.matn
+  }
+  
 
   getUrl(fayl: any) {
     if (fayl && fayl.id) {
@@ -82,6 +94,5 @@ export class ShowBiznesComponent implements OnInit {
     return "assets/no_photo.png"
   }
 
-
-  displayedColumns: string[] = ['id', 'image', 'nom', 'tuliqMalumot'];
+  displayedColumns: string[] = ['id', 'image', 'nom', 'tuliqMalumot', 'dateTime', 'actions'];
 }

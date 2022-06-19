@@ -44,7 +44,7 @@ export class OnlineYangililarComponent implements OnInit {
   let info = this.OnlineForm.getRawValue()
 
    if (info.tur.toString() == "Instagram") {
-    info.link = info.link.toString() + "/embed"
+    info.link = info.link.toString() + "embed"
    };
    
 

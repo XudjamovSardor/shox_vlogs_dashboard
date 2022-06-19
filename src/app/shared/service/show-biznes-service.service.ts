@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
+import { Page } from '../model/page';
 import { ShowBiznes } from '../model/showbiznes';
 
 @Injectable({
@@ -15,8 +16,8 @@ export class ShowBiznesServiceService {
     private http: HttpClient
   ) {}
 
-  getAll(): Observable<ShowBiznes[]> {
-    return this.http.get<ShowBiznes[]>(this.api)
+  getAll(): Observable<Page<ShowBiznes[]>> {
+    return this.http.get<Page<ShowBiznes[]>>(this.api)
   }
 
   create(rek: any): Observable<ShowBiznes> {

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
+import { Page } from '../model/page';
 import { Yangilik } from '../model/yangilik';
 
 @Injectable({
@@ -14,8 +15,8 @@ export class YangilikServiceService {
     private http: HttpClient
   ) {}
 
-  getAll(): Observable<Yangilik[]> {
-    return this.http.get<Yangilik[]>(this.api)
+  getAll(): Observable<Page<Yangilik[]>> {
+    return this.http.get<Page<Yangilik[]>>(this.api)
   }
 
   create(rek: any): Observable<Yangilik> {

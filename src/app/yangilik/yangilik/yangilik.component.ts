@@ -13,6 +13,8 @@ export class YangilikComponent implements OnInit {
 
   yangilikFrom!: FormGroup
 
+  matn: String = ''
+
   showBiznes!: any[]
 
   selectedFile: File | undefined;
@@ -36,7 +38,7 @@ export class YangilikComponent implements OnInit {
 
   loader() {
     this.yangilikService.getAll().subscribe((data: any) => {
-      this.showBiznes = data
+      this.showBiznes = data.content
     })
   }
 
@@ -76,6 +78,21 @@ export class YangilikComponent implements OnInit {
     }
   }
 
+  delete(id: number) {
+    this.yangilikService.deleteById(id).subscribe(() => {
+      this.loader()
+    })
+  }
+
+  tuliqView(i: any) {
+    this.matn = i.tuliqMalumot;
+    this.tuliqMatn()
+  }
+
+  tuliqMatn() {
+    return this.matn
+  }
+
   getUrl(fayl: any) {
     if (fayl && fayl.id) {
       return environment.api + "/api/fail/download/" + fayl.id;
@@ -84,5 +101,5 @@ export class YangilikComponent implements OnInit {
   }
 
 
-  displayedColumns: string[] = ['id', 'image', 'matn', 'tuliqMalumot'];
+  displayedColumns: string[] = ['id', 'image', 'matn', 'tuliqMalumot', "amal"];
 }
