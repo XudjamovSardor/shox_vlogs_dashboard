@@ -1,3 +1,6 @@
+<br>
+<button mat-raised-button routerLink="/dashboard"><mat-icon color="black">reply</mat-icon> Bosh sahifa</button>
+<br><br>
 <mat-accordion>
     <mat-expansion-panel hideToggle>
         <mat-expansion-panel-header>
@@ -9,8 +12,8 @@
         </mat-expansion-panel-header>
           <form [formGroup]="yangilikFrom" method="post" (ngSubmit)="save()">
 
-                <mat-label>Matn</mat-label>
-                <input formControlName="matn" matInput>
+                <mat-label>Matn kiritish</mat-label>
+                <input formControlName="matn" matInput><br><br>
 
                 <mat-label>Tuliq malumot</mat-label>
                 <textarea formControlName="tuliqMalumot" matInput>Tuliq malumot...</textarea>

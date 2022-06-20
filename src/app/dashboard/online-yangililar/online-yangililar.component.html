@@ -1,4 +1,6 @@
 <br>
+<button mat-raised-button routerLink="/dashboard"><mat-icon color="black">reply</mat-icon> Bosh sahifa</button>
+<br><br>
 <mat-accordion class="example-headers-align">
   <mat-expansion-panel hideToggle>
     <mat-expansion-panel-header>
@@ -9,16 +11,16 @@
     <form [formGroup]="OnlineForm" method="post" (ngSubmit)="save()">
 
         <mat-label>Link</mat-label>
-        <input formControlName="link" matInput>
+        <input formControlName="link" matInput><br><br>
 
         <mat-label>Caption</mat-label>
-        <input formControlName="caption" matInput type="text">
+        <input formControlName="caption" matInput type="text"><br><br>
 
       <mat-checkbox formControlName="boshSahifaga" type="checkbox">Bosh sahifaga</mat-checkbox>
       <br><br>
 
-        <mat-label>Subject-Levl</mat-label>
-        <mat-select formControlName="tur" [disabled]="disableSelect.value">
+        <mat-label>Subject-Level</mat-label>
+        <mat-select formControlName="tur"  [disabled]="disableSelect.value">
           <mat-option value="YouTube">YouTube</mat-option>
           <mat-option value="Instagram">Intgram</mat-option>
         </mat-select>

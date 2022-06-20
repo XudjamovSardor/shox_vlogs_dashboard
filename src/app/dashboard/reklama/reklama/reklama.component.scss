@@ -30,6 +30,21 @@
     }
 }
 
+input{
+  text-decoration: none;
+  border: 1px solid rgb(73, 73, 202);
+  padding: 15px 10px;
+  border-radius: 10px;
+  
+  width: 100%;
+
+}
+textarea{
+  border-radius: 10px;
+
+  width: 100%;
+}
+
 mat-form-field {
     width: 100%;
 }
@@ -42,3 +57,4 @@ mat-form-field {
     display: none;
   }
 }
+

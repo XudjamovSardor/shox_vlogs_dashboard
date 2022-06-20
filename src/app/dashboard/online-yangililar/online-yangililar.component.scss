@@ -8,3 +8,27 @@ table{
         border: solid 1px #eee;
     }
 }
+
+input{
+  text-decoration: none;
+  border: 1px solid rgb(73, 73, 202);
+  padding: 15px 10px;
+  border-radius: 10px;
+  
+  width: 100%;
+
+}
+textarea{
+  border-radius: 10px;
+
+  width: 100%;
+} 
+
+  mat-select{
+    text-decoration: none;
+    border: 1px solid rgb(73, 73, 202);
+    padding: 10px 7px;
+    border-radius: 10px;
+    margin-left: 10px;
+    width: 15%;
+  }

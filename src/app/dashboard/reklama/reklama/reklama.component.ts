@@ -37,7 +37,6 @@ export class ReklamaComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.reklamaForm = this.fb.group({
       id: [],
-      baner: [false],
       image: ['']
     });
     this.loadAll()

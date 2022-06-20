@@ -1,5 +1,4 @@
 import { Fayl } from "./fayil";
-import { Tur } from "./Tur";
 
 export interface OnlineYangilik {
     id: number;
@@ -7,5 +6,5 @@ export interface OnlineYangilik {
     link: string;
     image: Fayl;
     boshSahifa: boolean;
-    tur: Tur
+    tur: string
 }

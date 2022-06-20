@@ -16,6 +16,7 @@ export class OnlineYangililarComponent implements OnInit {
 
 
 
+
   constructor(
     private fb: FormBuilder,
     private onlineYangilikService: OnlineYangiliklarServiceService
