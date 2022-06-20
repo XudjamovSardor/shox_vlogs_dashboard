@@ -59,10 +59,10 @@ export class YangilikComponent implements OnInit {
     }
   }
   save2(i: any) {
-      this.yangilikService.create(i).subscribe(() => {
-        this.loader();
-        console.log("Info saved");
-      })
+    this.yangilikService.create(i).subscribe(() => {
+      this.loader();
+      console.log("Info saved");
+    })
   }
 
   selectFile(e: any) {

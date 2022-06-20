@@ -8,26 +8,20 @@
     </mat-expansion-panel-header>
     <form [formGroup]="OnlineForm" method="post" (ngSubmit)="save()">
 
-      <mat-form-field appearance="fill">
         <mat-label>Link</mat-label>
         <input formControlName="link" matInput>
-      </mat-form-field> <br><br>
 
-      <mat-form-field appearance="fill">
         <mat-label>Caption</mat-label>
         <input formControlName="caption" matInput type="text">
-      </mat-form-field><br><br>
 
       <mat-checkbox formControlName="boshSahifaga" type="checkbox">Bosh sahifaga</mat-checkbox>
       <br><br>
 
-      <mat-form-field appearance="fill">
         <mat-label>Subject-Levl</mat-label>
         <mat-select formControlName="tur" [disabled]="disableSelect.value">
           <mat-option value="YouTube">YouTube</mat-option>
           <mat-option value="Instagram">Intgram</mat-option>
         </mat-select>
-      </mat-form-field><br><br>
 
       <mat-action-row>
         <button mat-raised-button color="primary" [disabled]="OnlineForm.invalid" type="submit">

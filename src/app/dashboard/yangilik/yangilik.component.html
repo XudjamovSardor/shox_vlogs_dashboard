@@ -3,21 +3,17 @@
         <mat-expansion-panel-header>
           <mat-panel-title>
             <mat-card-header>
-                Show Biznes Yangiliklar bilan ishlash bo'limi
+                Yangiliklar bilan ishlash bo'limi
             </mat-card-header>
           </mat-panel-title>
         </mat-expansion-panel-header>
-          <form [formGroup]="showBiznesForm" method="post" (ngSubmit)="save()">
+          <form [formGroup]="yangilikFrom" method="post" (ngSubmit)="save()">
 
-            <mat-form-field appearance="fill">
                 <mat-label>Matn</mat-label>
                 <input formControlName="matn" matInput>
 
-            </mat-form-field> <br><br>
-            <mat-form-field style="width: 100%;" appearance="fill">
                 <mat-label>Tuliq malumot</mat-label>
                 <textarea formControlName="tuliqMalumot" matInput>Tuliq malumot...</textarea>
-            </mat-form-field>
 
             <div class="file-chooser">
                 <img [src]="fayl ?? 'assets/no_photo.png'" alt="">
@@ -35,7 +31,7 @@
             </div> -->
                 <mat-action-row>
                     <button class="btn" mat-raised-button color="primary" type="submit"
-                        [disabled]="showBiznesForm.invalid">
+                        [disabled]="yangilikFrom.invalid">
                         <mat-icon class="mat-18">add</mat-icon>
                         Saqlash</button>
                 </mat-action-row>
@@ -61,7 +57,7 @@
     </ng-container>
   
     <!-- Weight Column -->
-    <ng-container matColumnDef="nom">
+    <ng-container matColumnDef="matn">
       <th mat-header-cell *matHeaderCellDef> Matn </th>
       <td mat-cell *matCellDef="let element"> {{element.matn}} </td>
     </ng-container>
@@ -69,25 +65,16 @@
     <!-- Symbol Column -->
     <ng-container matColumnDef="tuliqMalumot">
       <th mat-header-cell *matHeaderCellDef> Tuliq Malumot </th>
-      <td mat-cell *matCellDef="let element"> <button type="submit" (click)="tuliqView(element)" mat-raised-button color="warn">Tuliq Mant</button> </td>
-    </ng-container>
-    
-    <ng-container matColumnDef="dateTime">
-      <th mat-header-cell *matHeaderCellDef> Vaqt </th>
-      <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+      <td mat-cell *matCellDef="let element"> <button type="submit" (click)="tuliqView(element)" mat-raised-button color="warn">Tuliq Matn</button> </td>
     </ng-container>
 
-    <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef> Amalar </th>
-      <td mat-cell *matCellDef="let element"> <button type="submit" mat-stroked-button color="primary"><mat-icon>delete</mat-icon></button> </td>
+    <ng-container matColumnDef="amal">
+      <th mat-header-cell *matHeaderCellDef> Amal </th>
+      <td mat-cell *matCellDef="let element"> <button (click)="delete(element.id)" mat-button><mat-icon>delete</mat-icon></button> </td>
     </ng-container>
   
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
-<br><br>
-
-<mat-card>
-  {{ tuliqMatn() }}
-</mat-card>
+<mat-card>{{ tuliqMatn() }}</mat-card>

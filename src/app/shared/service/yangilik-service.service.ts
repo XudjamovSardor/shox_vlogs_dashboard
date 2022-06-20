@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
@@ -19,8 +19,8 @@ export class YangilikServiceService {
     return this.http.get<Page<Yangilik[]>>(this.api)
   }
 
-  create(rek: any): Observable<Yangilik> {
-    return this.http.post<Yangilik>(this.api, rek)
+  create(rek: any): Observable<any> {
+    return this.http.post<any>(this.api,rek)
   }
 
   update(rek: any): Observable<Yangilik> {

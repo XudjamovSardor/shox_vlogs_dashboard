@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="header">
+    <h1>Authentication</h1>
+  </div>
+  <mat-divider></mat-divider>
+
+  <div class="urta">
+    <form [formGroup]="authoForm" class="example-form" (ngSubmit)="validets()">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Login</mat-label>
+
+        <input formControlName="login" matInput placeholder="* * * * * * *">
+        <mat-icon matSuffix>login</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Parol</mat-label>
+        <mat-icon matSuffix>lock</mat-icon>
+        <input formControlName="password" type="password" matInput placeholder="* * * * * * *">
+
+      </mat-form-field>
+      <mat-divider></mat-divider>
+      <br>
+      <button mat-raised-button color="primary" style="float: right; margin-right: 50px" type="submit">
+        <mat-icon>check - box</mat-icon>Keyingi
+      </button>
+    </form>
+
+
+  </div>
+
+
+</div>
