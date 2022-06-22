@@ -1,5 +1,5 @@
 import { MediaMatcher } from '@angular/cdk/layout';
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthoService } from '../shared/service/autho.service';
 
@@ -8,7 +8,7 @@ import { AuthoService } from '../shared/service/autho.service';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements AfterViewInit {
 
   mobileQuery: MediaQueryList;
 
@@ -19,18 +19,19 @@ export class DashboardComponent implements OnInit {
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
   }
+
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     let code = sessionStorage.getItem('token')?.toString();
-    if (code) {
+    if (code) {        
       this.valid(code);
+    } else {
+      this._router.navigate(['/autho'])     
     }
-
   }
-
   valid(code: String) {
     this._authoService.validation(code).subscribe(d => {
       if (!d) {
@@ -39,6 +40,8 @@ export class DashboardComponent implements OnInit {
     })
   }
 
-
-
+  logOut() {
+    sessionStorage.removeItem("token")
+    this._router.navigate(['/autho'])
+  }
 }

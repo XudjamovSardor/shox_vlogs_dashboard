@@ -12,15 +12,8 @@
       </button>
      
       
-      <mat-menu #menuRef="matMenu">
-          <button mat-menu-item >
-              <mat-icon class="mat-18">login</mat-icon> Login
-          </button>
-          <button mat-menu-item >
-              <mat-icon class="mat-18">app_registration</mat-icon> Register
-          </button>
-    
-          <button mat-menu-item >
+      <mat-menu #menuRef="matMenu">    
+          <button (click)="logOut()" mat-menu-item >
             <mat-icon class="mat-18">logout</mat-icon> Logout
         </button>
       </mat-menu>
