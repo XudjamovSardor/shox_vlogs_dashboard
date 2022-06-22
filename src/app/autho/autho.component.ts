@@ -30,14 +30,23 @@ export class AuthoComponent implements OnInit {
   validets() {
 
     let row = this.authoForm.getRawValue();
-    
-    if (row.login == this.login || row.password == this.passowrd) {
-           this._authoService.create().subscribe(d => {
-              sessionStorage.setItem('token', d.code);
-              this._router.navigate(['/dashboard']);
-           })
-    }
 
+    if (row.login == this.login || row.password == this.passowrd) {
+      this._authoService.create().subscribe(d => {
+        sessionStorage.setItem('token', d.code);
+        this._router.navigate(['/dashboard']);
+      })
+    }
   }
+
+  veiwPass(i: any) {
+    if (i.type.toString() == "password") {
+      i.type = "text"
+    } else {
+      i.type = 'password'
+    }
+    
+  }
+
 
 }

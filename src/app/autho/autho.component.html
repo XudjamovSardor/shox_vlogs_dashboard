@@ -1,9 +1,8 @@
-<!-- <div class="container">
+<div class="container">
   <div class="header">
     <h1>Authentication</h1>
   </div>
   <mat-divider></mat-divider>
-
   <div class="urta">
     <form [formGroup]="authoForm" class="example-form" (ngSubmit)="validets()">
       <mat-form-field class="example-full-width" appearance="fill">
@@ -15,8 +14,8 @@
 
       <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Parol</mat-label>
-        <mat-icon matSuffix>lock</mat-icon>
-        <input formControlName="password" type="password" matInput placeholder="* * * * * * *">
+        <mat-icon matSuffix><span (click)="veiwPass(pass)">lock</span></mat-icon>
+        <input #pass formControlName="password" type="password" matInput placeholder="* * * * * * *">
 
       </mat-form-field>
       <mat-divider></mat-divider>
@@ -25,34 +24,23 @@
         <mat-icon>check - box</mat-icon>Keyingi
       </button>
     </form>
-
-
   </div>
-
-
-</div> -->
+</div>
 
 
 
-<form action="/action_page.php" method="post" class="big-container" [formGroup]="authoForm"  (ngSubmit)="validets()">
+<!-- <form action="/action_page.php" method="post" class="big-container" [formGroup]="authoForm"  (ngSubmit)="validets()">
   <div class="imgcontainer">
     <img src="./../../assets/no_photo.png" alt="Avatar" class="avatar">
   </div>
 
   <div class="container">
-    <!-- <label for="uname"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required> -->
     <mat-form-field class="example-full-width" appearance="fill" >
       <mat-label>Login</mat-label>
 
       <input width="100%" formControlName="login" matInput placeholder="* * * * * * *">
       <mat-icon matSuffix>login</mat-icon>
     </mat-form-field> <br>
-
-
-
-    <!-- <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required> -->
 
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Parol</mat-label>
@@ -71,4 +59,4 @@
     <button type="button" class="cancelbtn">Cancel</button>
     
   </div>
-</form>
+</form> -->
