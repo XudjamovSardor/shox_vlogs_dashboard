@@ -13,14 +13,17 @@ export class YangilikServiceService {
 
   constructor(
     private http: HttpClient
-  ) {}
+  ) { }
 
   getAll(): Observable<Page<Yangilik[]>> {
     return this.http.get<Page<Yangilik[]>>(this.api)
   }
 
   create(rek: any): Observable<any> {
-    return this.http.post<any>(this.api,rek)
+    let param = {}
+    let token = sessionStorage.getItem('token')
+    if (token) param = {code: token }
+    return this.http.post<any>(this.api, rek, { params: param })
   }
 
   update(rek: any): Observable<Yangilik> {
@@ -28,6 +31,6 @@ export class YangilikServiceService {
   }
 
   deleteById(id: number): Observable<any> {
-    return this.http.delete<any>(this.api +  "/" + id)
+    return this.http.delete<any>(this.api + "/" + id)
   }
 }

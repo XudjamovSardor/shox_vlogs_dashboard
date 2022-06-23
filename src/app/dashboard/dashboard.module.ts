@@ -9,6 +9,7 @@ import { YangilikComponent } from './yangilik/yangilik.component';
 import { material_import } from '../material-import-list';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard.component';
+import { SafePipe } from '../shared/safe.pipe';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { DashboardComponent } from './dashboard.component';
     OnlineYangililarComponent,
     ReklamaComponent,
     ShowBiznesComponent,
-    YangilikComponent
+    YangilikComponent,
+    SafePipe
 
   ],
   imports: [

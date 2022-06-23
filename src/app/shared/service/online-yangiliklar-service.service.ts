@@ -19,6 +19,7 @@ export class OnlineYangiliklarServiceService {
   }
 
   create(i: any): Observable<OnlineYangilik> {
+    
     return this.http.post<OnlineYangilik>(this.api, i)
   }
 

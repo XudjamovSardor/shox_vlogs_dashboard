@@ -17,6 +17,6 @@ export class AuthoService {
   }
 
   validation(code: String) {
-    return this.hhtp.get<any>(this.api + "/" + code);
+    return this.hhtp.get<any>(this.api + "/validate/" + code);
   }
 }

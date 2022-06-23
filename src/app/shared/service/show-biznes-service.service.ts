@@ -20,8 +20,11 @@ export class ShowBiznesServiceService {
     return this.http.get<Page<ShowBiznes[]>>(this.api)
   }
 
-  create(rek: any): Observable<ShowBiznes> {
-    return this.http.post<ShowBiznes>(this.api, rek)
+  create(obj: any): Observable<ShowBiznes> {
+    let param = {}
+    let token = sessionStorage.getItem('token')
+    if (token) param = {code: token }
+    return this.http.post<ShowBiznes>(this.api, obj, {params: param})
   }
 
   update(rek: any): Observable<ShowBiznes> {

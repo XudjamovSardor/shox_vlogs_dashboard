@@ -66,4 +66,6 @@ export class OnlineYangililarComponent implements OnInit {
     this.onlineYangilikService.deletById(id).subscribe(d => { this.loader() });
   }
 
+  displayedColumns = ['id', "link", "caption", "boshSahifa", 'tur', 'active']
+
 }

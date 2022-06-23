@@ -1,91 +1,92 @@
 <br>
-<button mat-raised-button routerLink="/dashboard"><mat-icon color="black">reply</mat-icon> Bosh sahifa</button>
+<button mat-raised-button routerLink="/dashboard">
+  <mat-icon color="black">reply</mat-icon> Bosh sahifa
+</button>
 <br><br>
 <mat-accordion>
-    <mat-expansion-panel hideToggle>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            <mat-card-header>
-                Yangiliklar bilan ishlash bo'limi
-            </mat-card-header>
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-          <form [formGroup]="yangilikFrom" method="post" (ngSubmit)="save()">
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <mat-card-header>
+          Yangiliklar bilan ishlash bo'limi
+        </mat-card-header>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <form [formGroup]="yangilikFrom" method="post" (ngSubmit)="save()">
 
-                <mat-label>Matn kiritish</mat-label>
-                <input formControlName="matn" matInput><br><br>
+      <mat-label>Matn</mat-label>
+      <input formControlName="matn" matInput><br><br>
 
-                <mat-label>Tuliq malumot</mat-label>
-                <textarea formControlName="tuliqMalumot" matInput>Tuliq malumot...</textarea>
+      <mat-label>Tuliq malumot</mat-label>
+      <textarea formControlName="tuliqMalumot" matInput>Tuliq malumot...</textarea>
 
-                <mat-label>YouTube Link</mat-label>
-                <input formControlName="onlineYangilik" matInput><br><br>
+      <mat-label>YouTube Link</mat-label>
+      <input formControlName="onlineYangilik" placeholder="Short emas" matInput><br><br>
 
-            <div class="file-chooser">
-                <img [src]="fayl ?? 'assets/no_photo.png'" alt="">
-                <input #inputFile formControlName="image" type="file" accept="image/apng, image/avif, image/gif, image/jpeg, image/png, image/svg+xml, image/webp" (change)="selectFile($event)" />
-                <button type="button"  mat-raised-button color="warn" (click)="inputFile.click()">Fayl tanlash</button>
-            </div>
-
-            
-            <br>
-
-            <!-- <div class="file-chooser">
-                <img [src]="fayl ?? 'assets/no_photo.png'" alt="">
-                <input #inputFile formControlName="image" type="file" accept="image/apng, image/avif, image/gif, image/jpeg, image/png, image/svg+xml, image/webp" (change)="selectFile($event)" />
-                <button type="button"  mat-raised-button color="warn" (click)="inputFile.click()">Fayl tanlash</button>
-            </div> -->
-                <mat-action-row>
-                    <button class="btn" mat-raised-button color="primary" type="submit"
-                        [disabled]="yangilikFrom.invalid">
-                        <mat-icon class="mat-18">add</mat-icon>
-                        Saqlash</button>
-                </mat-action-row>
-            </form>
-      </mat-expansion-panel>
+      <div class="file-chooser">
+        <img [src]="fayl ?? 'assets/no_photo.png'" alt="">
+        <input #inputFile formControlName="image" type="file"
+          accept="image/apng, image/avif, image/gif, image/jpeg, image/png, image/svg+xml, image/webp"
+          (change)="selectFile($event)" />
+        <button type="button" mat-raised-button color="warn" (click)="inputFile.click()">Fayl tanlash</button>
+      </div>
+      <br>
+      <mat-action-row>
+        <button class="btn" mat-raised-button color="primary" type="submit" [disabled]="yangilikFrom.invalid">
+          <mat-icon class="mat-18">add</mat-icon>
+          Saqlash
+        </button>
+      </mat-action-row>
+    </form>
+  </mat-expansion-panel>
 </mat-accordion><br>
 
 <table mat-table [dataSource]="showBiznes" class="mat-elevation-z8">
 
-    <!--- Note that these columns can be defined in any order.
+  <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
-  
-    <!-- Position Column -->
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef> # </th>
-      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-    </ng-container>
-  
-    <!-- Name Column -->
-    <ng-container matColumnDef="image">
-      <th mat-header-cell *matHeaderCellDef> Image </th>
-      <td mat-cell *matCellDef="let element"><a [href]="getUrl(element.image)" target="_blank" rel="noopener noreferrer"><img height="50" style="margin: 20px 10px;" [src]="getUrl(element.image)"></a>  </td>
-    </ng-container>
-  
-    <!-- Weight Column -->
-    <ng-container matColumnDef="matn">
-      <th mat-header-cell *matHeaderCellDef> Matn </th>
-      <td mat-cell *matCellDef="let element"> {{element.matn}} </td>
-    </ng-container>
-  
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="tuliqMalumot">
-      <th mat-header-cell *matHeaderCellDef> Tuliq Malumot </th>
-      <td mat-cell *matCellDef="let element"> <button type="submit" (click)="tuliqView(element)" mat-raised-button color="warn">Tuliq Matn</button> </td>
-    </ng-container>
 
-    <ng-container matColumnDef="onlineYangilik">
-      <th mat-header-cell *matHeaderCellDef> Online Yangilik </th>
-      <td mat-cell *matCellDef="let element"> {{ element.onlineYangilik }} </td>
-    </ng-container>
+  <!-- Position Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> # </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
 
-    <ng-container matColumnDef="amal">
-      <th mat-header-cell *matHeaderCellDef> Amal </th>
-      <td mat-cell *matCellDef="let element"> <button (click)="delete(element.id)" mat-button><mat-icon>delete</mat-icon></button> </td>
-    </ng-container>
-  
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
+  <!-- Name Column -->
+  <ng-container matColumnDef="image">
+    <th mat-header-cell *matHeaderCellDef> Image </th>
+    <td mat-cell *matCellDef="let element"><a [href]="getUrl(element.image)" target="_blank"
+        rel="noopener noreferrer"><img height="50" style="margin: 20px 10px;" [src]="getUrl(element.image)"></a> </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="matn">
+    <th mat-header-cell *matHeaderCellDef> Matn </th>
+    <td mat-cell *matCellDef="let element"> {{element.matn}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="tuliqMalumot">
+    <th mat-header-cell *matHeaderCellDef> Tuliq Malumot </th>
+    <td mat-cell *matCellDef="let element"> <button type="submit" (click)="tuliqView(element)" mat-raised-button
+        color="warn">Tuliq Matn</button> </td>
+  </ng-container>
+
+  <ng-container matColumnDef="onlineYangilik">
+    <th mat-header-cell *matHeaderCellDef> Online Yangilik </th>
+    <!-- <td mat-cell *matCellDef="let element"><iframe width="560" height="315" src="{{element.onlineYangilik | safe}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> </td> -->
+    <td mat-cell *matCellDef="let element"> <iframe width="250" height="125" [src] = 'element.onlineYangilik | safe' frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> </td>
+  </ng-container>
+
+  <ng-container matColumnDef="amal">
+    <th mat-header-cell *matHeaderCellDef> Amal </th>
+    <td mat-cell *matCellDef="let element"> <button mat-raised-button color="primary" (click)="delete(element.id)" mat-button>
+        <mat-icon>delete</mat-icon>
+      </button> </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
 
 <mat-card>{{ tuliqMatn() }}</mat-card>

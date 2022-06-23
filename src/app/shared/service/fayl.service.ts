@@ -14,6 +14,11 @@ export class FaylService {
   upload(file: File){
     let formData = new FormData();
     formData.append("fail", file, file.name);
-    return this.http.post(this.baseApi + "/upload", formData);
+
+    let param = {}
+    let token = sessionStorage.getItem('token')
+    if (token) param = {code: token }
+
+    return this.http.post(this.baseApi + "/upload", formData, {params: param});
   }
 }

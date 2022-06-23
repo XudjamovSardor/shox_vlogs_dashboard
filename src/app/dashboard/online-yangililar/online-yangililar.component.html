@@ -1,5 +1,7 @@
 <br>
-<button mat-raised-button routerLink="/dashboard"><mat-icon color="black">reply</mat-icon> Bosh sahifa</button>
+<button mat-raised-button routerLink="/dashboard">
+  <mat-icon color="black">reply</mat-icon> Bosh sahifa
+</button>
 <br><br>
 <mat-accordion class="example-headers-align">
   <mat-expansion-panel hideToggle>
@@ -10,59 +12,66 @@
     </mat-expansion-panel-header>
     <form [formGroup]="OnlineForm" method="post" (ngSubmit)="save()">
 
-        <mat-label>Link</mat-label>
-        <input formControlName="link" matInput><br><br>
+      <mat-label>Link</mat-label>
+      <input formControlName="link" matInput><br><br>
 
-        <mat-label>Caption</mat-label>
-        <input formControlName="caption" matInput type="text"><br><br>
+      <mat-label>Caption</mat-label>
+      <input formControlName="caption" matInput type="text"><br><br>
 
       <mat-checkbox formControlName="boshSahifaga" type="checkbox">Bosh sahifaga</mat-checkbox>
       <br><br>
 
-        <mat-label>Subject-Level</mat-label>
-        <mat-select formControlName="tur"  [disabled]="disableSelect.value">
-          <mat-option value="YouTube">YouTube</mat-option>
-          <mat-option value="Instagram">Intgram</mat-option>
-        </mat-select>
+      <mat-label>Tur</mat-label>
+      <mat-select formControlName="tur" [disabled]="disableSelect.value">
+        <mat-option value="YouTube">YouTube</mat-option>
+        <mat-option value="Instagram">Intgram</mat-option>
+      </mat-select>
 
       <mat-action-row>
         <button mat-raised-button color="primary" [disabled]="OnlineForm.invalid" type="submit">
           <mat-icon class="mat-18">add</mat-icon>
-          Saqlash</button>
+          Saqlash
+        </button>
       </mat-action-row>
     </form>
   </mat-expansion-panel>
 </mat-accordion>
 <br><br><br>
-<table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Link</th>
-      <th>Caption</th>
-      <th>Bosh Sahifaga</th>
-      <th>Tur</th>
-      <th>Amal</th>
-    </tr>
+<table mat-table [dataSource]="OnlineYangiliklar" class="mat-elevation-z8">
 
-  </thead>
-  <tbody>
-    <tr *ngFor="let o of OnlineYangiliklar">
-      <td>{{o.id}}</td>
-      <td>
-        <a [href]="o.link" target="_blank">{{o.link}}</a>
-      </td>
-      <td>{{o.caption}}</td>
-      <td>{{o.boshSahifaga}}</td>
-      <td>{{o.tur}}</td>
-      <td>
-        <button mat-button (click)="ochirish(o.id)">
-          <mat-icon class="mat-18">delete</mat-icon>
-        </button>
-      </td>
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> # </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
 
-    </tr>
+  <ng-container matColumnDef="link">
+    <th mat-header-cell *matHeaderCellDef> Link </th>
+    <td mat-cell *matCellDef="let element"> {{element.link}} </td>
+  </ng-container>
 
-  </tbody>
-  <br><br>
+  <ng-container matColumnDef="caption">
+    <th mat-header-cell *matHeaderCellDef> Caption </th>
+    <td mat-cell *matCellDef="let element"> {{element.caption}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="boshSahifa">
+    <th mat-header-cell *matHeaderCellDef> Bosh Sahifa </th>
+    <td mat-cell *matCellDef="let element"> <button mat-raised-button [color]="element.boshSahifaga ? 'primary' : 'warn'"> ### </button> </td>
+  </ng-container>
+
+  <ng-container matColumnDef="tur">
+    <th mat-header-cell *matHeaderCellDef> Tur </th>
+    <td mat-cell *matCellDef="let element"> {{element.tur}} </td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="active">
+    <th mat-header-cell *matHeaderCellDef> Amal </th>
+    <td mat-cell *matCellDef="let element"> <button (click)="ochirish(element.id)" mat-button>
+        <mat-icon>delete</mat-icon>
+      </button> </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
