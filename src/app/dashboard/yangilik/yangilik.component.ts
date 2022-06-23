@@ -30,7 +30,8 @@ export class YangilikComponent implements OnInit {
     this.yangilikFrom = this.fb.group({
       matn: [''],
       image: [''],
-      tuliqMalumot: ['']
+      tuliqMalumot: [''],
+      onlineYangilik: ['']
     })
 
     this.loader()
@@ -50,7 +51,6 @@ export class YangilikComponent implements OnInit {
         info.image = {
           id: data.id
         }
-        console.log("File saved");
         this.save2(info);
       });
 
@@ -61,7 +61,6 @@ export class YangilikComponent implements OnInit {
   save2(i: any) {
     this.yangilikService.create(i).subscribe(() => {
       this.loader();
-      console.log("Info saved");
     })
   }
 
@@ -101,5 +100,5 @@ export class YangilikComponent implements OnInit {
   }
 
 
-  displayedColumns: string[] = ['id', 'image', 'matn', 'tuliqMalumot', "amal"];
+  displayedColumns: string[] = ['id', 'image', 'matn', 'tuliqMalumot', 'onlineYangilik', "amal"];
 }

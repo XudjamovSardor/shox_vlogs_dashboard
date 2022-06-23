@@ -16,7 +16,7 @@ export class ReklamaComponent implements OnInit, AfterViewInit {
   isLoading = false;
   isLoadingResult = true;
   isLoadingReached = false;
-  displayedColumns = ['id', 'rasm', 'baner', "vaqt", 'amal'];
+  displayedColumns = ['id', 'rasm', "vaqt", 'amal'];
 
   selectedFile: File | undefined;
   fayl: any;

@@ -18,6 +18,9 @@
                 <mat-label>Tuliq malumot</mat-label>
                 <textarea formControlName="tuliqMalumot" matInput>Tuliq malumot...</textarea>
 
+                <mat-label>YouTube Link</mat-label>
+                <input formControlName="onlineYangilik" matInput><br><br>
+
             <div class="file-chooser">
                 <img [src]="fayl ?? 'assets/no_photo.png'" alt="">
                 <input #inputFile formControlName="image" type="file" accept="image/apng, image/avif, image/gif, image/jpeg, image/png, image/svg+xml, image/webp" (change)="selectFile($event)" />
@@ -69,6 +72,11 @@
     <ng-container matColumnDef="tuliqMalumot">
       <th mat-header-cell *matHeaderCellDef> Tuliq Malumot </th>
       <td mat-cell *matCellDef="let element"> <button type="submit" (click)="tuliqView(element)" mat-raised-button color="warn">Tuliq Matn</button> </td>
+    </ng-container>
+
+    <ng-container matColumnDef="onlineYangilik">
+      <th mat-header-cell *matHeaderCellDef> Online Yangilik </th>
+      <td mat-cell *matCellDef="let element"> {{ element.onlineYangilik }} </td>
     </ng-container>
 
     <ng-container matColumnDef="amal">

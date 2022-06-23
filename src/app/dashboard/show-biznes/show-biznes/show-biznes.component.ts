@@ -49,7 +49,6 @@ export class ShowBiznesComponent implements OnInit {
         info.image = {
           id: data.id
         }
-        console.log("File saved");
         this.save2(info);
       });
 
@@ -60,7 +59,6 @@ export class ShowBiznesComponent implements OnInit {
   save2(i: any) {
       this.showBiznesService.create(i).subscribe(data => {
         this.loader();
-        console.log("Info saved");
       })
   }
 
