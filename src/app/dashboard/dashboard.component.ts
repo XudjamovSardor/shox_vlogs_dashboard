@@ -25,7 +25,7 @@ export class DashboardComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    let code = sessionStorage.getItem('token')?.toString();
+    let code = sessionStorage.getItem('token');
     if (code) {        
       this.valid(code);
     } else {

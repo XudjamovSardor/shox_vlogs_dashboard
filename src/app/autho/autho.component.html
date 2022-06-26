@@ -15,7 +15,7 @@
       <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Parol</mat-label>
         <mat-icon matSuffix><span (click)="veiwPass(pass)">lock</span></mat-icon>
-        <input #pass formControlName="password" type="password" matInput placeholder="* * * * * * *">
+        <input #pass formControlName="password" autocomplete="on" type="password" matInput placeholder="* * * * * * *">
 
       </mat-form-field>
       <mat-divider></mat-divider>

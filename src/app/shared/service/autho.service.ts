@@ -15,8 +15,13 @@ export class AuthoService {
   create(): Observable<any> {
     return this.hhtp.post<any>(this.api, {});
   }
-
   validation(code: String) {
-    return this.hhtp.get<any>(this.api + "/validate/" + code);
+    let p = {}
+    if (code) {
+      p = {
+        code: code
+      }
+    }
+    return this.hhtp.get<any>(this.api + "/validate", { params: p });
   }
 }
