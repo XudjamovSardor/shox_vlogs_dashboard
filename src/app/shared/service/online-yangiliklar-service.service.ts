@@ -19,8 +19,10 @@ export class OnlineYangiliklarServiceService {
   }
 
   create(i: any): Observable<OnlineYangilik> {
-    
-    return this.http.post<OnlineYangilik>(this.api, i)
+    let param = {}
+    let token = sessionStorage.getItem('token')
+    if (token) param = {code: token }
+    return this.http.post<OnlineYangilik>(this.api, i, {params: param})
   }
 
   update(i: any): Observable<OnlineYangilik> {
