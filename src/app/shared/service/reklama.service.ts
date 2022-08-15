@@ -24,7 +24,7 @@ export class ReklamaService {
     let param = {}
     let token = sessionStorage.getItem('token')
     if (token) param = {code: token }
-    return this.http.post<Reklama>(this.api, rek, {params: param})
+    return this.http.post<Reklama>(this.api, rek)
   }
 
   update(rek: any): Observable<Reklama> {

@@ -103,9 +103,7 @@ export class ReklamaComponent implements OnInit, AfterViewInit {
     this.reklamaForm.reset();
     this.selectedFile = undefined;
     this.tahrirRejim = false;
-    this.isLoading = false;
-    window.location.reload();
-    
+    this.isLoading = false;    
   }
 
   

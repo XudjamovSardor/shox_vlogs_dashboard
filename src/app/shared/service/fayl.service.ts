@@ -19,6 +19,6 @@ export class FaylService {
     let token = sessionStorage.getItem('token')
     if (token) param = {code: token }
 
-    return this.http.post(this.baseApi + "/upload", formData, {params: param});
+    return this.http.post(this.baseApi + "/upload", formData);
   }
 }

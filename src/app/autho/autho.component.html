@@ -4,11 +4,11 @@
   </div>
   <mat-divider></mat-divider>
   <div class="urta">
-    <form [formGroup]="authoForm" class="example-form" (ngSubmit)="validets()">
+    <form [formGroup]="authoForm" class="example-form" (ngSubmit)="login()">
       <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Login</mat-label>
 
-        <input formControlName="login" matInput placeholder="* * * * * * *">
+        <input formControlName="username" matInput placeholder="* * * * * * *">
         <mat-icon matSuffix>login</mat-icon>
       </mat-form-field>
 

@@ -24,7 +24,7 @@ export class ShowBiznesServiceService {
     let param = {}
     let token = sessionStorage.getItem('token')
     if (token) param = {code: token }
-    return this.http.post<ShowBiznes>(this.api, obj, {params: param})
+    return this.http.post<ShowBiznes>(this.api, obj)
   }
 
   update(rek: any): Observable<ShowBiznes> {

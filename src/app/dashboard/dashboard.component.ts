@@ -8,7 +8,7 @@ import { AuthoService } from '../shared/service/autho.service';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements AfterViewInit {
+export class DashboardComponent {
 
   mobileQuery: MediaQueryList;
 
@@ -24,24 +24,4 @@ export class DashboardComponent implements AfterViewInit {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
 
-  ngAfterViewInit(): void {
-    let code = sessionStorage.getItem('token');
-    if (code) {        
-      this.valid(code);
-    } else {
-      this._router.navigate(['/autho'])     
-    }
-  }
-  valid(code: String) {
-    this._authoService.validation(code).subscribe(d => {
-      if (!d) {
-        this._router.navigate(['/autho']);
-      }
-    })
-  }
-
-  logOut() {
-    sessionStorage.removeItem("token")
-    this._router.navigate(['/autho'])
-  }
 }

@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
 import { OnlineYangilik } from '../model/OnlineYangilik';
-import { Page } from '../model/page';
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +20,8 @@ export class OnlineYangiliklarServiceService {
   create(i: any): Observable<OnlineYangilik> {
     let param = {}
     let token = sessionStorage.getItem('token')
-    if (token) param = {code: token }
-    return this.http.post<OnlineYangilik>(this.api, i, {params: param})
+    if (token) param = {code: token}
+    return this.http.post<OnlineYangilik>(this.api, i)
   }
 
   update(i: any): Observable<OnlineYangilik> {
