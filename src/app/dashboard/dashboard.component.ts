@@ -11,6 +11,7 @@ import { AuthoService } from '../shared/service/autho.service';
 export class DashboardComponent {
 
   mobileQuery: MediaQueryList;
+  date: Date | undefined;
 
   private _mobileQueryListener: () => void;
 
@@ -18,6 +19,10 @@ export class DashboardComponent {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
+
+    setInterval(() => {
+      this.date = new Date()
+    }, 100)
   }
 
   ngOnDestroy(): void {

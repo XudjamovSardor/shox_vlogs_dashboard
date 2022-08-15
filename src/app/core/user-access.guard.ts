@@ -39,7 +39,7 @@ export class UserAccessGuard implements CanActivate {
     this.snakBar.open(`Bu bo'limga sizga ruxsat etilmagan! Iltimos kiring!`, 'Ok', {
       duration: 4000,
     });
-    this.router.navigate(['/auth/signin']);
+    this.router.navigate(['/autho']);
   }
   
 }

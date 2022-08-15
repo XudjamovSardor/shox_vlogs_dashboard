@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatAccordion } from '@angular/material/expansion';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { OnlineYangiliklarServiceService } from 'src/app/shared/service/online-yangiliklar-service.service';
@@ -16,6 +17,7 @@ export class OnlineYangililarComponent implements OnInit {
 
 
 
+  @ViewChild(MatAccordion) accordion!: MatAccordion;
 
   constructor(
     private fb: FormBuilder,
@@ -65,6 +67,11 @@ export class OnlineYangililarComponent implements OnInit {
   ochirish(id: number) {
     this.onlineYangilikService.deletById(id).subscribe(d => { this.loader() });
   }
+
+  tozalash() {
+    this.accordion.closeAll();
+  }
+
 
   displayedColumns = ['id', "link", "caption", "boshSahifa", 'tur', 'active']
 

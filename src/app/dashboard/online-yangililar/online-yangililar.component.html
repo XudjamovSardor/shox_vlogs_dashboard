@@ -24,11 +24,10 @@
       <mat-label>Tur</mat-label>
       <mat-select formControlName="tur" [disabled]="disableSelect.value">
         <mat-option value="YouTube">YouTube</mat-option>
-        <mat-option value="Instagram">Intgram</mat-option>
       </mat-select>
 
       <mat-action-row>
-        <button mat-raised-button color="primary" [disabled]="OnlineForm.invalid" type="submit">
+        <button mat-raised-button color="primary" [disabled]="OnlineForm.invalid" type="submit" (click)="tozalash()">
           <mat-icon class="mat-18">add</mat-icon>
           Saqlash
         </button>

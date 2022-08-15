@@ -25,7 +25,7 @@
                 </div>
                 <mat-action-row>
                     <button class="btn" mat-raised-button color="primary" type="submit"
-                        [disabled]="reklamaForm.invalid || isLoading">
+                        [disabled]="reklamaForm.invalid || isLoading" (click)="tozalash1()">
                         <mat-spinner *ngIf="isLoading" diameter="20"></mat-spinner>
                     <mat-icon *ngIf="!isLoading" class="mat-18">add</mat-icon>
                         Saqlash

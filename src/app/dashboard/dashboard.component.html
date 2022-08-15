@@ -36,13 +36,22 @@
         </mat-nav-list>
          
       </mat-sidenav>
+
+      
     
       <mat-sidenav-content >
         <div class="main-content">
            <router-outlet></router-outlet>
         </div>
-       
+       <h2 style="display: flex; justify-content: center; align-items: center; margin-top: 40px;">{{date | date: "fullDate"}}
+        {{date | date: "HH:mm:ss"}}</h2>
+    <div style="display: flex; justify-content: center; align-items: center;">
+      
+      <img src="./../../assets/IMG_0306.PNG" alt="" width="600" height="500">
+    </div>
       </mat-sidenav-content>
     </mat-sidenav-container>
+    
+
 
     

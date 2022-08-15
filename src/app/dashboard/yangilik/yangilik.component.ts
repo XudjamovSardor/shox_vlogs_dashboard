@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatAccordion } from '@angular/material/expansion';
 import { FaylService } from 'src/app/shared/service/fayl.service';
 import { YangilikServiceService } from 'src/app/shared/service/yangilik-service.service';
 import { environment } from 'src/environments/environment.prod';
@@ -19,6 +20,8 @@ export class YangilikComponent implements OnInit {
 
   selectedFile: File | undefined;
   fayl: any;
+
+  @ViewChild(MatAccordion) accordion!: MatAccordion;
 
   constructor(
     private fb: FormBuilder,
@@ -97,6 +100,10 @@ export class YangilikComponent implements OnInit {
       return environment.api + "/api/fail/download/" + fayl.id;
     }
     return "assets/no_photo.png"
+  }
+
+  tozalash1(){
+    this.accordion.closeAll();
   }
 
 
